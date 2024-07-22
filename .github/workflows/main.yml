@@ -16,6 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
+    - name: Install NUnit Console Runner
+      run: |
+        choco install nunit-console
+
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
@@ -24,10 +28,6 @@ jobs:
 
     - name: Restore Nuget Packages
       run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
-
-    - name: Install NUnit Console Runner
-      run: |
-        choco install nunit-console --version=3.11.1
 
     - name: Find and Run Tests
       run: |
