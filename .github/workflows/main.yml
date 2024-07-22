@@ -19,10 +19,15 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
+    - name: Setup NuGet.exe
+      uses: nuget/setup-nuget@v2
+
+    - name: Restore Nuget Packages
+      run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
+
     - name: Install NUnit Console Runner
       run: |
         choco install nunit-console --version=3.11.1
-        refreshenv
 
     - name: Find and Run Tests
       run: |
@@ -37,12 +42,6 @@ jobs:
             Write-Output "No .csproj file found in $testDir"
           }
         }
-
-    - name: Setup NuGet.exe
-      uses: nuget/setup-nuget@v2
-
-    - name: Restore Nuget Packages
-      run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
 
     - name: Build app for release
       run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
