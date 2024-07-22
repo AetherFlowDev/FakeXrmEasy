@@ -9,8 +9,8 @@
     <ProjectGuid>{4DBE3742-8974-40F2-B8D6-DF5E4152A520}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AetherFlow.Xrm.FakeXrmEasy.Net.Tests</RootNamespace>
-    <AssemblyName>AetherFlow.Xrm.FakeXrmEasy.Net.Tests</AssemblyName>
+    <RootNamespace>AetherFlow.FakeXrmEasy.Plugins.Tests</RootNamespace>
+    <AssemblyName>AetherFlow.FakeXrmEasy.Plugins.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
