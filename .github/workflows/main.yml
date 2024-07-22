@@ -16,13 +16,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Download NUnit Console Runner
-      run: |
-        Invoke-WebRequest -Uri https://github.com/nunit/nunit-console/releases/download/3.18.1/NUnit.Console-3.18.1.zip -OutFile NUnit.Console-3.18.1.zip
-        Expand-Archive -Path NUnit.Console-3.18.1.zip -DestinationPath NUnit.Console
-
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
+
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1.2
 
     - name: Setup NuGet.exe
       uses: nuget/setup-nuget@v2
@@ -30,19 +28,5 @@ jobs:
     - name: Restore Nuget Packages
       run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
 
-    - name: Find and Run Tests
-      run: |
-        $testDirs = Get-ChildItem -Recurse -Directory -Filter '*.test'
-        foreach ($testDir in $testDirs) {
-          Write-Output "Running tests in $testDir"
-          $csprojFile = Get-ChildItem "$testDir.FullName" -Filter '*.csproj' -Recurse
-          if ($csprojFile) {
-            Write-Output "Found project file: $csprojFile"
-            & "$(pwd)\NUnit.Console\bin\net35\nunit3-console.exe" "$csprojFile.FullName"
-          } else {
-            Write-Output "No .csproj file found in $testDir"
-          }
-        }
-
-    - name: Build app for release
-      run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
+    - name: Run Tests
+      run: vstest.console.exe .\AetherFlow.FakeXrmEasy.Plugins.Test\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Test.dll
