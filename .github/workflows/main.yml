@@ -16,9 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Install NUnit Console Runner
+    - name: Download NUnit Console Runner
       run: |
-        choco install nunit-console
+        Invoke-WebRequest -Uri https://github.com/nunit/nunit-console/releases/download/3.18.1/NUnit.Console-3.18.1.zip -OutFile NUnit.Console-3.18.1.zip
+        Expand-Archive -Path NUnit.Console-3.18.1.zip -DestinationPath NUnit.Console
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
@@ -37,7 +38,7 @@ jobs:
           $csprojFile = Get-ChildItem "$testDir.FullName" -Filter '*.csproj' -Recurse
           if ($csprojFile) {
             Write-Output "Found project file: $csprojFile"
-            & 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe' "$csprojFile.FullName"
+            & "$(pwd)\NUnit.Console\bin\net35\nunit3-console.exe" "$csprojFile.FullName"
           } else {
             Write-Output "No .csproj file found in $testDir"
           }
