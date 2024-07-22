@@ -1,0 +1,37 @@
+name: Build & Test .NET Framework
+
+on:
+  pull_request:
+    branches:
+      - '*/feat/*'
+  push:
+    branches:
+      - '*/feat/*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Framework
+      uses: warrenbuckley/Setup-Nuget@v1
+      with:
+        nuget-version: latest
+
+    - name: Install NuGet packages
+      run: nuget restore
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.3
+
+    - name: Build solution
+      run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln /p:Configuration=Release
+
+    - name: Run unit tests
+      run: |
+        # Use the appropriate path to your test DLLs
+        & 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe' \
+        '**\bin\Release\net462\*Tests.dll'
