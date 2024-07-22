@@ -35,7 +35,8 @@ jobs:
       run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
 
     - name: Run Tests
-      run: OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll" -output:".\MyProject_coverage.xml"
+      run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll /EnableCodeCoverage
+      # run: OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll" -output:".\MyProject_coverage.xml"
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
