@@ -16,16 +16,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup NuGet
-      run: |
-        choco install nuget -y
-        echo "C:\ProgramData\chocolatey\lib\nuget\tools" >> $env:GITHUB_PATH
-
-    - name: Install NuGet packages
-      run: nuget restore
-
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.3
+
+    - name: Restore Solution
+      run: dotnet restore
 
     - name: Build solution
       run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln /p:Configuration=Release
