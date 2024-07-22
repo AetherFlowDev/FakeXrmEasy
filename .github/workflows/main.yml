@@ -19,7 +19,7 @@ jobs:
     - name: Setup NuGet
       run: |
         choco install nuget -y
-        echo "::add-path::$(choco install nuget -y | Out-String | Select-String -Pattern 'C:\\ProgramData\\chocolatey\\lib\\nuget\\tools' | ForEach-Object { $_.Matches.Value })"
+        echo "C:\ProgramData\chocolatey\lib\nuget\tools" >> $env:GITHUB_PATH
 
     - name: Install NuGet packages
       run: nuget restore
