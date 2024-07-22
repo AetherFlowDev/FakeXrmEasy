@@ -29,7 +29,7 @@ jobs:
       run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
 
     - name: Build app for release
-      run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
+      run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -v:diag -property:Configuration=Release
 
     - name: Run Tests
       run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll
