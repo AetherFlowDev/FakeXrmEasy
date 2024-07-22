@@ -28,5 +28,8 @@ jobs:
     - name: Restore Nuget Packages
       run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
 
+    - name: Build app for release
+      run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
+
     - name: Run Tests
       run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Test\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Test.dll
