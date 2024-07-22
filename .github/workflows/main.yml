@@ -16,10 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET Framework
-      uses: warrenbuckley/Setup-Nuget@v1
-      with:
-        nuget-version: latest
+    - name: Setup NuGet
+      run: |
+        choco install nuget -y
+        echo "::add-path::$(choco install nuget -y | Out-String | Select-String -Pattern 'C:\\ProgramData\\chocolatey\\lib\\nuget\\tools' | ForEach-Object { $_.Matches.Value })"
 
     - name: Install NuGet packages
       run: nuget restore
