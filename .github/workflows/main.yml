@@ -32,4 +32,4 @@ jobs:
       run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
 
     - name: Run Tests
-      run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Test\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Test.dll
+      run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll
