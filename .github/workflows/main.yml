@@ -33,3 +33,8 @@ jobs:
 
     - name: Run Tests
       run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
