@@ -16,23 +16,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
-
-    #- name: Setup VSTest
-      #uses: darenm/Setup-VSTest@v1.2
-
-    - name: Setup NuGet.exe
-      uses: nuget/setup-nuget@v2
-
     - name: Restore Project
       run: dotnet restore
 
     - name: Build Project
       run: dotnet build
 
-    - name: Test Project
-      run: dotnet test AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll
+    - name: Run unit tests with coverage
+      run: |
+        $testDlls = Get-ChildItem -Path . -Recurse -Filter '*Tests.dll' | Select-Object -ExpandProperty FullName
+        foreach ($dll in $testDlls) {
+          dotnet test $dll --collect:"XPlat Code Coverage" --settings .github/configuration/coverlet.runsettings
+        }
+      shell: pwsh
 
     #- name: install opencover
     #  run: choco install opencover.portable
