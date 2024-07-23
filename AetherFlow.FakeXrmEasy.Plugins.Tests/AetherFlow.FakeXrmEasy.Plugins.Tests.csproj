@@ -23,7 +23,7 @@
     <ProjectReference Include="..\AetherFlow.FakeXrmEasy.Plugins\AetherFlow.FakeXrmEasy.Plugins.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
+    <PackageReference Include="coverlet.msbuild" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

@@ -27,7 +27,7 @@ jobs:
         $testDlls = Get-ChildItem -Path . -Recurse -Filter '*Tests.dll' | Select-Object -ExpandProperty FullName
         foreach ($dll in $testDlls) {
           Write-Output "Running tests on: $dll"
-          dotnet test $dll --collect:"XPlat Code Coverage" --settings .github/configuration/coverlet.runsettings
+          dotnet test $dll /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Exclude=\"[*.Tests]*\"
         }
       shell: pwsh
 
