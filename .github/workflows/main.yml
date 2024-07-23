@@ -22,12 +22,16 @@ jobs:
     - name: Build Project
       run: dotnet build
 
+    - name: Install Coverlet
+      run: dotnet tool install --global coverlet.console
+      shell: pwsh
+
     - name: Run unit tests with coverage
       run: |
         $testDlls = Get-ChildItem -Path . -Recurse -Filter '*Tests.dll' | Select-Object -ExpandProperty FullName
         foreach ($dll in $testDlls) {
           Write-Output "Running tests on: $dll"
-          dotnet test $dll /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Exclude=\"[*.Tests]*\"
+          coverlet $dll --target "dotnet" --targetargs "test $dll" --format "opencover" --output "./coverage.opencover.xml" --exclude "[*.Tests]*"
         }
       shell: pwsh
 
@@ -52,9 +56,9 @@ jobs:
       # run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll /EnableCodeCoverage
       #run: OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll" -output:".\MyProject_coverage.xml"
 
-    #- name: Upload coverage reports to Codecov
-     # uses: codecov/codecov-action@v4.0.1
-    #  with:
-     #   token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
 
