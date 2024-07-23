@@ -26,15 +26,17 @@ jobs:
       run: |
         $testDlls = Get-ChildItem -Path . -Recurse -Filter '*Tests.dll' | Select-Object -ExpandProperty FullName
         foreach ($dll in $testDlls) {
-          dotnet test $dll --collect:"XPlat Code Coverage" --settings .github/configuration/coverlet.runsettings
+          Write-Output "Running tests on: $dll"
+          dotnet test $dll --settings .github/configuration/coverlet.runsettings /p:CollectCoverage=true /p:CoverletOutputFormat=opencover 
         }
       shell: pwsh
 
-    #- name: install opencover
-    #  run: choco install opencover.portable
-
     #- name: Restore Nuget Packages
     #  run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
+
+
+    #- name: install opencover
+    #  run: choco install opencover.portable
 
     #- name: Build app for release
      # run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
