@@ -1,264 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props')" />
-  <Import Project="..\packages\NUnit.3.14.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.14.0\build\NUnit.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DBE3742-8974-40F2-B8D6-DF5E4152A520}</ProjectGuid>
+    <TargetFramework>net462</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AetherFlow.FakeXrmEasy.Plugins.Tests</RootNamespace>
-    <AssemblyName>AetherFlow.FakeXrmEasy.Plugins.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="FakeItEasy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
-      <HintPath>..\packages\FakeItEasy.8.3.0\lib\net462\FakeItEasy.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.52\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.52\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.52\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.14.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.14.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Activities.Presentation" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.IdentityModel" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=6.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.6.0.7\lib\net461\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Workflow.Activities" />
     <Reference Include="System.Workflow.ComponentModel" />
     <Reference Include="System.Workflow.Runtime" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeActivitiesForTesting\AddActivity.cs" />
-    <Compile Include="CodeActivitiesForTesting\AddActivityWithConstant.cs" />
-    <Compile Include="CodeActivitiesForTesting\CheckContextPropertyActivity.cs" />
-    <Compile Include="CodeActivitiesForTesting\CreateTaskActivity.cs" />
-    <Compile Include="Extensions\EntityExtensionsTests.cs" />
-    <Compile Include="Extensions\EntityMetadataExtensionsTests.cs" />
-    <Compile Include="Extensions\QueryExpressionExtensionsTests.cs" />
-    <Compile Include="FakeContextTests\AddListMembersListRequestTests\Tests.cs" />
-    <Compile Include="FakeContextTests\AddMemberListRequestTests\Tests.cs" />
-    <Compile Include="FakeContextTests\AddMembersTeamRequestTests\Tests.cs" />
-    <Compile Include="FakeContextTests\AddToQueueRequestTests\AddToQueueRequestTests.cs" />
-    <Compile Include="FakeContextTests\AddUserToRecordTeamRequestTests\AddUserToRecordTeamRequestTests.cs" />
-    <Compile Include="FakeContextTests\AssignRequestTests\AssignRequestTests.cs" />
-    <Compile Include="FakeContextTests\AssociateRequestTests\AssociateRequestTests.cs" />
-    <Compile Include="FakeContextTests\BasePluginTests\BasePluginTests.cs" />
-    <Compile Include="FakeContextTests\BulkDeleteRequestTests\BulkDeleteRequestTests.cs" />
-    <Compile Include="FakeContextTests\CloseIncidentRequestTests\CloseIncidentRequestTests.cs" />
-    <Compile Include="FakeContextTests\CloseQuoteRequestTests\CloseQuoteRequestTests.cs" />
-    <Compile Include="FakeContextTests\CustomRequestTests\NavigateToNextEntityRequestTests\NavigateToNextEntityRequestTests.cs" />
-    <Compile Include="FakeContextTests\DateTimeBehaviourTests\DateTimeBehaviourTests.cs" />
-    <Compile Include="FakeContextTests\DeleteRequestTests\DeleteRequestTests.cs" />
-    <Compile Include="FakeContextTests\DisassociateRequestTests\DisassociateRequestTests.cs" />
-    <Compile Include="FakeContextTests\ExecuteFetchRequestTests\ExecuteFetchRequestTests.cs" />
-    <Compile Include="FakeContextTests\ExecuteMultipleRequestTests\ExecuteMultipleRequestTests.cs" />
-    <Compile Include="FakeContextTests\ExecuteTransationTests\ExecuteTransactionTests.cs" />
-    <Compile Include="FakeContextTests\FakeContextMockTests.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestCodeActivities.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestCreate.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestCreateQuery.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestDelete.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestExecute.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestMetadata.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestPlugins.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestRetrieve.cs" />
-    <Compile Include="FakeContextTests\FakeContextTests.cs" />
-    <Compile Include="FakeContextTests\FakeContextTestUpdate.cs" />
-    <Compile Include="FakeContextTests\FakeTracingServiceTests.cs" />
-    <Compile Include="FakeContextTests\FetchXmlToQueryExpressionRequestTests\FetchXmlToQueryExpressionRequestTests.cs" />
-    <Compile Include="FakeContextTests\FetchXml\AggregateTests.cs" />
-    <Compile Include="FakeContextTests\FetchXml\ConditionOperatorTests.cs" />
-    <Compile Include="FakeContextTests\FetchXml\FakeContextTestFetchXmlTranslation.cs" />
-    <Compile Include="FakeContextTests\FetchXml\OperatorTests\Strings\StringOperatorTests.cs" />
-    <Compile Include="FakeContextTests\FetchXml\TypeConversionTests.cs" />
-    <Compile Include="FakeContextTests\InitializeFromRequestTests\InitializeFromRequestTests.cs" />
-    <Compile Include="FakeContextTests\InsertOptionValueRequestTests\InsertOptionValueRequestTests.cs" />
-    <Compile Include="FakeContextTests\InsertStatusValueRequestTests\InsertStatusValueRequestTests.cs" />
-    <Compile Include="FakeContextTests\LinqTests\EqualityWithDifferentDataTypesTests.cs" />
-    <Compile Include="FakeContextTests\LinqTests\FakeContextTestLinqQueries.cs" />
-    <Compile Include="FakeContextTests\LinqTests\MetadataInferenceTests.cs" />
-    <Compile Include="FakeContextTests\LoseOpportunityTests\LoseOpportunityTests.cs" />
-    <Compile Include="FakeContextTests\ModifyAccessRightsTests\ModifyAccessRequestTests.cs" />
-    <Compile Include="FakeContextTests\OptionSetValuesRequestTests\OptionSetValueRequestsTests.cs" />
-    <Compile Include="FakeContextTests\OrgServiceContextTests\OrgServiceContextTests.cs" />
-    <Compile Include="FakeContextTests\PermissionsTests\PermissionsTests.cs" />
-    <Compile Include="FakeContextTests\PickFromQueueRequestTests\PickFromQueueRequestTests.cs" />
-    <Compile Include="FakeContextTests\PublishXml\PublishXmlRequestTests.cs" />
-    <Compile Include="FakeContextTests\QualifyLeadTests\QualifyLeadTests.cs" />
-    <Compile Include="FakeContextTests\QueryByAttribute\QueryByAttributeTests.cs" />
-    <Compile Include="FakeContextTests\QueryLookupTests\QueryLookupTests.cs" />
-    <Compile Include="FakeContextTests\QueryTests\BusinessIdTests.cs" />
-    <Compile Include="FakeContextTests\QueryTranslationTests\ProjectionTests.cs" />
-    <Compile Include="FakeContextTests\RemoveFromQueueRequestTests\RemoveFromQueueRequestTests.cs" />
-    <Compile Include="FakeContextTests\RemoveMembersTeamRequestTests\Tests.cs" />
-    <Compile Include="FakeContextTests\RemoveUserFromRecordTeamRequestTests\RemoveUserFromRecordTeamRequestTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveAttributeRequestTests\RetrieveAttributeRequestTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveEntityRequestTests\RetrieveEntityRequestTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveMultiple\QueryLinkEntityTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveMultiple\RetrieveMultipleTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveOptionSetRequestTests\RetrieveOptionSetRequestTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveRequestTests\RetrieveRequestTests.cs" />
-    <Compile Include="FakeContextTests\RetrieveVersionRequestTests\RetrieveVersionRequestTests.cs" />
-    <Compile Include="FakeContextTests\ReviseQuoteRequestTests\ReviseQuoteRequestTests.cs" />
-    <Compile Include="FakeContextTests\SendEmailRequestTests\SendEmailRequestTests.cs" />
-    <Compile Include="FakeContextTests\SetStateRequestTests\SetStateRequestTests.cs" />
-    <Compile Include="FakeContextTests\TestGenericMessageExecutors.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\ConditionExpressionTests.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\FakeContextTestFormattedValues.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\FakeContextTestTranslateQueryExpression.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\FilterExpressionTests.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\OperatorTests\DateTime\DateTimeOperatorsTests.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\OperatorTests\MultiSelectOptionSet\MultiSelectOptionSetTests.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\OperatorTests\Strings\StringOperatorsTests.cs" />
-    <Compile Include="FakeContextTests\TranslateQueryExpressionTests\OrderByTests.cs" />
-    <Compile Include="FakeContextTests\UpsertRequestTests\UpsertRequestTests.cs" />
-    <Compile Include="FakeContextTests\ValidateReferencesTests.cs" />
-    <Compile Include="FakeContextTests\WhoAmIRequest\WhoAmITests.cs" />
-    <Compile Include="FakeContextTests\WinOpportunityRequestTests\WinOpportunityTests.cs" />
-    <Compile Include="FakeContextTests\XrmFakedRelationshipTests.cs" />
-    <Compile Include="FakeXrmEasyTestsBase.cs" />
-    <Compile Include="Features\RetrieveMultipleDataProviderTesting.cs" />
-    <Compile Include="GeneratedCode.cs" />
-    <Compile Include="GeneratedCodeMultiselectOptionSet.cs" />
-    <Compile Include="Issue116.cs" />
-    <Compile Include="Issues\Issue125.cs" />
-    <Compile Include="Issues\Issue156.cs" />
-    <Compile Include="Issues\Issue165.cs" />
-    <Compile Include="Issues\Issue178.cs" />
-    <Compile Include="Issues\Issue180.cs" />
-    <Compile Include="Issues\Issue191.cs" />
-    <Compile Include="Issues\Issue226.cs" />
-    <Compile Include="Issues\Issue253.cs" />
-    <Compile Include="Issues\Issue256.cs" />
-    <Compile Include="Issues\Issue278.cs" />
-    <Compile Include="Issues\Issue300.cs" />
-    <Compile Include="Issues\Issue308.cs" />
-    <Compile Include="Issues\Issue312.cs" />
-    <Compile Include="Issues\Issue328.cs" />
-    <Compile Include="Issues\Issue512.cs" />
-    <Compile Include="Issues\ProxyEntities.cs" />
-    <Compile Include="Issues\TestCRMHandlingOfNullsAndMissingFields.cs" />
-    <Compile Include="Pipeline\PipelineTests.cs" />
-    <Compile Include="PluginsForTesting\AccountNumberPlugin.cs" />
-    <Compile Include="PluginsForTesting\AccountSetTerritories.cs" />
-    <Compile Include="PluginsForTesting\BasePlugin.cs" />
-    <Compile Include="PluginsForTesting\ConfigurationPlugin.cs" />
-    <Compile Include="PluginsForTesting\CreateAccountPlugin.cs" />
-    <Compile Include="PluginsForTesting\CustomMockPlugin.cs" />
-    <Compile Include="PluginsForTesting\EntityImagesPlugin.cs" />
-    <Compile Include="PluginsForTesting\ExceptionLoverPlugin.cs" />
-    <Compile Include="PluginsForTesting\FollowupPlugin.cs" />
-    <Compile Include="PluginsForTesting\InheritedPlugin.cs" />
-    <Compile Include="PluginsForTesting\PostOperationUpdatePlugin.cs" />
-    <Compile Include="PluginsForTesting\PreAccountCreate.cs" />
-    <Compile Include="PluginsForTesting\RetrieveMultipleDataProvider.cs" />
-    <Compile Include="PluginsForTesting\RetrieveServicesPlugin.cs" />
-    <Compile Include="PluginsForTesting\ServiceEndpointNotificationPlugin.cs" />
-    <Compile Include="PluginsForTesting\TestContextOrgNamePlugin.cs" />
-    <Compile Include="PluginsForTesting\TestContextPlugin.cs" />
-    <Compile Include="PluginsForTesting\TestPropertiesPlugin.cs" />
-    <Compile Include="PluginsForTesting\TestSharedVariablesPropertyPlugin.cs" />
-    <Compile Include="PluginsForTesting\ValidatePipelinePlugin.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EntityInitializer\InvoiceDetailInitializerServiceTests.cs" />
-    <Compile Include="Services\EntityInitializer\InvoiceInitializerServiceTests.cs" />
-    <Compile Include="TestDefaultEntityInitializer.cs" />
-    <Compile Include="Tracing\XrmFakeTracingExample.cs" />
+    <ProjectReference Include="..\AetherFlow.FakeXrmEasy.Plugins\AetherFlow.FakeXrmEasy.Plugins.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AetherFlow.FakeXrmEasy.Plugins\AetherFlow.FakeXrmEasy.Plugins.csproj">
-      <Project>{855903e6-7aab-4c76-8ac2-192aa70d5227}</Project>
-      <Name>AetherFlow.FakeXrmEasy.Plugins</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.DirectoryServices" Version="8.0.0" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Castle.Core" Version="5.1.1" />
+    <PackageReference Include="FakeItEasy" Version="8.3.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.52" />
+    <PackageReference Include="Microsoft.CrmSdk.Workflow" Version="9.0.2.52" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" />
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.7" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.14.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.14.0\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props'))" />
-  </Target>
 </Project>
