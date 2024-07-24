@@ -5,6 +5,13 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+	<EnablePackageValidation>true</EnablePackageValidation>
+    <Authors>AetherFlowDev</Authors>
+    <Description>Provides an implementation of FakeXrmEasy for Dataverse plugin projects</Description>
+    <PackageId>AetherFlow.FakeXrmEasy.Plugins</PackageId>
+    <PackageRepositoryUrl>https://github.com/AetherFlowDev/FakeXrmEasy</PackageRepositoryUrl>
+    <PackageProjectUrl>https://aetherflow.dev</PackageProjectUrl>
+    <PackageTags>AetherFlow, Dataverse, FakeXrmEasy</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Activities" />
