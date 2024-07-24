@@ -9,9 +9,14 @@
     <Authors>AetherFlowDev</Authors>
     <Description>Provides an implementation of FakeXrmEasy for Dataverse plugin projects</Description>
     <PackageId>AetherFlow.FakeXrmEasy.Plugins</PackageId>
-    <PackageRepositoryUrl>https://github.com/AetherFlowDev/FakeXrmEasy</PackageRepositoryUrl>
-    <PackageProjectUrl>https://aetherflow.dev</PackageProjectUrl>
+	<PackageProjectUrl>https://aetherflow.dev</PackageProjectUrl>
     <PackageTags>AetherFlow, Dataverse, FakeXrmEasy</PackageTags>
+    <PackageIcon>AetherFlowIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/AetherFlowDev/FakeXrmEasy</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Title>AetherFlow FakeXrmEasy for Plugins</Title>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Activities" />
