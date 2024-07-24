@@ -2071,6 +2071,7 @@ namespace AetherFlow.FakeXrmEasy.Plugins.Tests.FakeContextTests.FetchXml
             var retrievedUser = collection.Entities[0].Id;
             Assert.AreEqual(retrievedUser, ct1.Id);
         }
+        
         [Test]
         public void FetchXml_Operator_This_Week_Execution()
         {
