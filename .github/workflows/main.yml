@@ -48,12 +48,6 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
 
-  publish:
-    needs: build
-    uses: ./.github/workflows/PublishNugetPackage.yml
-    with:
-      ProjectPath: AetherFlow.FakeXrmEasy.Plugins/AetherFlow.FakeXrmEasy.Plugins.csproj
-
   create_nuget:
     runs-on: windows-latest
     steps:
