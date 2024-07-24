@@ -8,9 +8,6 @@ on:
     branches:
       - '*/feat/*'
 
-env:
-  PROJECT_TO_PUBLISH: AetherFlow.FakeXrmEasy.Plugins/AetherFlow.FakeXrmEasy.Plugins.csproj
-
 jobs:
   build:
     uses: ./.github/workflows/BuildAndTestSolution.yml
@@ -19,4 +16,4 @@ jobs:
     needs: build
     uses: ./.github/workflows/PublishNugetPackage.yml
     with:
-      ProjectPath: ${{env.PROJECT_TO_PUBLISH}}
+      ProjectPath: AetherFlow.FakeXrmEasy.Plugins/AetherFlow.FakeXrmEasy.Plugins.csproj
