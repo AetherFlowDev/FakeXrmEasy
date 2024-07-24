@@ -13,10 +13,10 @@ env:
 
 jobs:
   build:
-    uses: ./.github/workflows/jobs/BuildAndTestSolution.yml
+    uses: ./.github/workflows/BuildAndTestSolution.yml
 
   publish:
     needs: build
-    uses: ./.github/workflows/jobs/PublishNugetPackage.yml
+    uses: ./.github/workflows/PublishNugetPackage.yml
     with:
       ProjectPath: ${{env.PROJECT_TO_PUBLISH}}
