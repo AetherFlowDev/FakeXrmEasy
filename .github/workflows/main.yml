@@ -8,55 +8,14 @@ on:
     branches:
       - '*/feat/*'
 
+env:
+  PROJECT_TO_PUBLISH: AetherFlow.FakeXrmEasy.Plugins/AetherFlow.FakeXrmEasy.Plugins.csproj
+
 jobs:
   build:
-    runs-on: windows-latest
+    uses: ./.github/jobs/BuildAndTestSolution.yml
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@master
-
-    - name: Build Project
-      run: dotnet build
-
-    - name: Install Coverlet
-      run: dotnet tool install --global coverlet.console
-      shell: pwsh
-
-    - name: Run unit tests with coverage
-      run: |
-        $testDlls = Get-ChildItem -Path . -Recurse -Include '*Tests.dll' -Filter '*.dll' | Where-Object { $_.FullName -like "*\bin\*" } | Select-Object -ExpandProperty FullName
-        foreach ($dll in $testDlls) {
-          Write-Output "Running tests on: $dll"
-          $dllName = [System.IO.Path]::GetFileNameWithoutExtension($dll)
-          coverlet $dll --target "dotnet" --targetargs "test $dll" --format "opencover" --output "./$dllName.coverage.opencover.xml" --exclude "[*.Tests]*"
-        }
-      shell: pwsh
-
-    - name: Report code coverage
-      uses: actions/upload-artifact@v4
-      with:
-        name: code-coverage-report
-        path: |
-          **/*.coverage.opencover.xml
-
-    #- name: Restore Nuget Packages
-    #  run: nuget restore AetherFlow.FakeXrmEasy.Plugins.sln
-
-
-    #- name: install opencover
-    #  run: choco install opencover.portable
-
-    #- name: Build app for release
-     # run: msbuild AetherFlow.FakeXrmEasy.Plugins.sln -t:rebuild -property:Configuration=Release
-
-    #- name: Run Tests
-      # run: vstest.console.exe AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll /EnableCodeCoverage
-      #run: OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"AetherFlow.FakeXrmEasy.Plugins.Tests\bin\Release\AetherFlow.FakeXrmEasy.Plugins.Tests.dll" -output:".\MyProject_coverage.xml"
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4.0.1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-
-
+  publish:
+    uses: ./.github/jobs/PublishNugetPackage.yml
+    with:
+      ProjectPath: ${{env.PROJECT_TO_PUBLISH}}
