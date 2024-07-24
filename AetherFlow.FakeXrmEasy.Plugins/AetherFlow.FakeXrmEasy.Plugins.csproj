@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/AetherFlowDev/FakeXrmEasy</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Title>AetherFlow FakeXrmEasy for Plugins</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
