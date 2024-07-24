@@ -19,8 +19,7 @@
     <Title>AetherFlow FakeXrmEasy for Plugins</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <NeutralLanguage>en</NeutralLanguage>
+	<NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Activities" />
